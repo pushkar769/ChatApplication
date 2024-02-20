@@ -12,9 +12,10 @@ function RegisterAndLogin(props) {
     async function handleSubmit(ev){
         // ev.preventDefault();
         // const url = isLoginOrRegister === 'register' ? 'register': 'login'
+        // const url = `${import.meta.env.VITE_API_BASE_URL}/${endpoint}`;
         ev.preventDefault();
         const endpoint = isLoginOrRegister === 'register' ? 'register' : 'login';
-        const url = `${import.meta.env.VITE_API_BASE_URL}/${endpoint}`;
+        const url = isLoginOrRegister === 'register' ? 'register': 'login'
         const {data} = await axios.post(url, {username, password});
         setLoggedInUserName(username); 
         setId(data.id);
