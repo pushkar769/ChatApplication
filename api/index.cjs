@@ -9,6 +9,7 @@ const bcrypt = require('bcryptjs')
 const ws = require('ws');
 const Message = require('./models/Message.cjs')
 
+const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_URL);
 
@@ -128,7 +129,9 @@ app.post('/register', async (req, res) => {
 });
 
 
-const server = app.listen(3000);
+const server = app.listen(port, () => {
+    console.log(`Listening on port: ${port}`);
+})
 
 //reads the, userId and userName from the cookies headers.
 
